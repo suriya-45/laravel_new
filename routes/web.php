@@ -33,8 +33,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->prefix("ticket")->group(function(){
-//   Route::get("/",[TicketController::class,"create"])->name("ticket.create");
-  Route::resource("/",TicketController::class);
+  Route::get("/",[TicketController::class,"create"])->name("ticket.create");
+  Route::patch("/store",[TicketController::class,'store'])->name("ticket.store");
+  // Route::resource("/",TicketController::class);
 });
 
 Route::get('/auth/redirect', function () {

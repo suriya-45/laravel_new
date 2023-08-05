@@ -29,6 +29,7 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
+        dd($request->all());
        
     }
 
