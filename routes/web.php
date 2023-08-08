@@ -32,9 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->prefix("ticket")->group(function(){
-  Route::get("/",[TicketController::class,"create"])->name("ticket.create");
-  Route::patch("/store",[TicketController::class,'store'])->name("ticket.store");
+Route::middleware('auth')->group(function(){
+  Route::get("/ticket",[TicketController::class,"create"])->name("ticket.create");
+  Route::patch("/ticket",[TicketController::class,'store'])->name("ticket.store");
+  Route::get("/ticket/index",[TicketController::class,'index'])->name("ticket.index");
+
   // Route::resource("/",TicketController::class);
 });
 
