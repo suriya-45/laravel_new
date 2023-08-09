@@ -14,7 +14,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $ticket = Ticket::all();
+        $ticket = Ticket::where("user_id",auth()->user()->id)->get();
         return view("ticket.index",compact('ticket'));
     }
 
@@ -31,11 +31,15 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        $ticket = Ticket::create([
+        $ticket = Ticket::updateOrCreate(
+            [
             "title"=>$request->title,
-            "description"=>$request->description,
             "user_id"=>auth()->user()->id
-        ]);
+            ],
+            [         
+             "description"=>$request->description,
+            ]
+    );
         $ticket = Ticket::find($ticket->id);
         if($request->file('attachment')){
            if($ticket->attachment != null){
@@ -44,7 +48,7 @@ class TicketController extends Controller
            $path =  Storage::disk("public")->put("attachment",$request->file('attachment'));
            $ticket->update(['attachment'=>$path]);
         }
-        return redirect(route('ticket.index'));
+        return redirect(route('ticket.index'))->with("msg","successfully created!");
        
     }
 
@@ -59,9 +63,9 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ticket $ticket)
+    public function edit(Ticket $id)
     {
-        
+        return view('ticket.edit',['ticket'=>$id]);
     }
 
     /**
@@ -77,6 +81,20 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        
+        if($ticket->delete())
+        {
+            return redirect(route('ticket.index'))->with("msg","Ticket Deleetd successfully");
+        }
+        else
+        {
+            return redirect(route('ticket.index'))->with("msg","Ticket Deleetd failed");
+
+        }
     }
+
+    public function view()
+    {
+       return view("ticket.view");
+    }
+
 }

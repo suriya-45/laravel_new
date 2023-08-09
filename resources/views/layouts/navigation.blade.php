@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
+                    <x-nav-link :href="route('ticket.index')" :active="request()->routeIs('ticket.index')">
                         {{ __('Support') }}
                     </x-nav-link>
                 </div>

@@ -33,9 +33,16 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function(){
-  Route::get("/ticket",[TicketController::class,"create"])->name("ticket.create");
-  Route::patch("/ticket",[TicketController::class,'store'])->name("ticket.store");
-  Route::get("/ticket/index",[TicketController::class,'index'])->name("ticket.index");
+  Route::get("/ticket",[TicketController::class,"index"])->name("ticket.index");
+  Route::get("/ticket/create",[TicketController::class,'create'])->name("ticket.create");
+  Route::patch("/ticket/store",[TicketController::class,'store'])->name("ticket.store");
+  Route::get("/ticket/edit/{id}",[TicketController::class,'edit'])->name("ticket.edit");
+  Route::get("/ticket/view",[TicketController::class,'view'])->name("ticket.view");
+  Route::get("/ticket/destroy{ticket}",[TicketController::class,'destroy'])->name("ticket.destroy");
+
+
+
+
 
   // Route::resource("/",TicketController::class);
 });
