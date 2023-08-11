@@ -47,6 +47,13 @@ License: For each use you must have a valid license purchased only from above li
 <body>
 	<div class="main-wrapper">
 
+		@php
+         use App\Models\User;
+		 use Illuminate\Support\Facades\Auth;
+
+        $id = Auth::user()->id;
+        $profile = User::find($id);
+     @endphp
 		<!-- partial:partials/_sidebar.html -->
 		@include('admin.body.side_bar')
    

@@ -81,7 +81,7 @@ License: For each use you must have a valid license purchased only from above li
                       </div>
                       <div class="form-check mb-3">
                         <input type="checkbox" name="remember_me" class="form-check-input" id="remember_me">
-                        <label class="form-check-label"   for="remember_me">
+                        <label class="form-check-label" for="remember_me">
                           Remember me
                         </label>
                       </div>
