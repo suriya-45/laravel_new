@@ -23,6 +23,8 @@ License: For each use you must have a valid license purchased only from above li
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
   <!-- End fonts -->
 
 	<!-- core:css -->
@@ -90,6 +92,10 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- Custom js for this page -->
   <script src="{{asset('backend/assets/js/dashboard-dark.js')}}"></script>
 	<!-- End custom js for this page -->
+
+
+	
+	
 
 </body>
 </html>    

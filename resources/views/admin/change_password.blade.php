@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+
 <div class="page-content">
 
     
@@ -51,46 +52,37 @@
             <div class="card">
                 <div class="card-body">
   
-                                  <h6 class="card-title">Update Profile</h6>
+                                  <h6 class="card-title">Update Password</h6>
   
-                                  <form class="forms-sample" action="{{route('admin.profilestore')}}" method="POST" enctype="multipart/form-data">
+                                  <form class="forms-sample" action="{{route('admin.savepassword')}}" method="POST" >
                                    @csrf
 
                                    <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" name="username" value="{{ $profile->username}}" class="form-control" id="username" autocomplete="off" placeholder="Username">
+                                    <label for="old_password" class="form-label">Old Password</label>
+                                    <input type="password" name="old_password" value="{{ old('old_password')}}" class="form-control" id="old_password" autocomplete="off">
                                 </div>
-                                    @error('username')
+                                    @error('old_password')
                                     <span  style="color: red">{{ $message }}</span>
                                     @enderror
+
+
                                     <div class="mb-3">
-                                          <label for="exampleInputUsername1" class="form-label">Name</label>
-                                          <input type="text" name="name" value="{{ $profile->name}}" class="form-control" id="name" autocomplete="off" placeholder="name">
-                                      </div>
-                                      @error('name')
-                                      <span  style="color: red">{{ $message }}</span>
-                                      @enderror
-                                      <div class="mb-3">
-                                          <label for="exampleInputEmail1" class="form-label">Email</label>
-                                          <input type="email" name="email" value="{{ $profile->email}}" class="form-control" id="email" placeholder="Email">
-                                      </div>
-                                      @error('email')
-                                      <span  style="color: red">{{ $message }}</span>
-                                      @enderror
-                                      <div class="mb-3">
-                                        <label for="exampleInputUsername1" class="form-label">Phone</label>
-                                        <input type="text" name="phone" class="form-control" value="{{ $profile->phone}}" id="phone" autocomplete="off" placeholder="Phone">
-                                    </div>
-                                    @error('phone')
+                                    <label for="new_password" class="form-label">New Password</label>
+                                    <input type="password" name="new_password" value="{{ old('new_password')}}" class="form-control" id="new_password" autocomplete="off">
+                                </div>
+                                    @error('new_password')
                                     <span  style="color: red">{{ $message }}</span>
                                     @enderror
+
+
                                     <div class="mb-3">
-                                        <label for="exampleInputUsername1" class="form-label">Profile</label>
-                                        <input type="file" name="photo" class="form-control" id="photo">
-                                    </div>
-                                        <div class="mb-3">
-                                            <img id="show_image" class="wd-70 rounded-circle" src="{{ (!empty($profile->photo) ? url('/upload/admin_images/'.$profile->photo) : url('no_image.jpg') ) }}" alt="profile">
-                                          </div>
+                                    <label for="confirm_password" class="form-label">Confirm Password</label>
+                                    <input type="password" name="confirm_password" value="{{ old('confirm_password')}}" class="form-control" id="confirm_password" autocomplete="off" >
+                                </div>
+                                    @error('confirm_password')
+                                    <span  style="color: red">{{ $message }}</span>
+                                    @enderror
+                                    
                                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                                   </form>
   

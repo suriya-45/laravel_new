@@ -92,6 +92,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
   Route::get('/admin/logout',[AdminController::class,"AdminLogout"])->name('admin.logout');
   Route::get('/admin/profile',[AdminController::class,"AdminProfile"])->name('admin.profile');
   Route::post('/admin/profile/store',[AdminController::class,"AdminProfilestore"])->name('admin.profilestore');
+  Route::get('/admin/changepassword',[AdminController::class,"AdminChangepassword"])->name('admin.changepassword');
+  Route::post('/admin/changepassword',[AdminController::class,"AdminSavepassword"])->name('admin.savepassword');
+
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function () {

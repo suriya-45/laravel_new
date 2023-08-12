@@ -75,10 +75,17 @@ License: For each use you must have a valid license purchased only from above li
                         <label for="login" class="form-label">Email/Name/Phone</label>
                         <input type="text" class="form-control" name="login" id="login" placeholder="Username">
                       </div>
+                      @error('login')
+                     <span style="color: red;">{{ $message}}</span>
+                      @enderror
                       <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="password" autocomplete="current-password" placeholder="Password">
                       </div>
+
+                      @error('password')
+                     <span style="color: red;">{{ $message}}</span>
+                      @enderror
                       <div class="form-check mb-3">
                         <input type="checkbox" name="remember_me" class="form-check-input" id="remember_me">
                         <label class="form-check-label" for="remember_me">

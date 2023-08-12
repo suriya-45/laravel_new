@@ -52,11 +52,10 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'login' => trans('auth.failed'),
+                'login' => 'Username or password incorrect',
             ]);
         }
-
-        Auth::login($user,$this->boolean('remember'));
+        Auth::login($user,$this->boolean('remember_me'),300);
         RateLimiter::clear($this->throttleKey());
     }
 
