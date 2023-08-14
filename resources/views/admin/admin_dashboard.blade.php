@@ -31,14 +31,13 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{asset('backend/assets/vendors/core/core.css')}}">
 	<!-- endinject -->
 
-	<!-- Plugin css for this page -->
-	<link rel="stylesheet" href="{{asset('backend/assets/vendors/flatpickr/flatpickr.min.css')}}">
-	<!-- End plugin css for this page -->
+	
 
 	<!-- inject:css -->
 	<link rel="stylesheet" href="{{asset('backend/assets/fonts/feather-font/css/iconfont.css')}}">
 	<link rel="stylesheet" href="{{asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
 	<!-- endinject -->
+	<link rel="stylesheet" href="{{asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="{{asset('backend/assets/css/demo2/style.css')}}">
@@ -48,7 +47,6 @@ License: For each use you must have a valid license purchased only from above li
 </head>
 <body>
 	<div class="main-wrapper">
-
 		@php
          use App\Models\User;
 		 use Illuminate\Support\Facades\Auth;
@@ -66,6 +64,7 @@ License: For each use you must have a valid license purchased only from above li
 			<!-- partial:partials/_navbar.html -->
 			@include('admin.body.header')
 			<!-- partial -->
+			@include('sweetalert::alert')
 
 			@yield('admin')
 			<!-- partial:partials/_footer.html -->
@@ -93,8 +92,6 @@ License: For each use you must have a valid license purchased only from above li
   <script src="{{asset('backend/assets/js/dashboard-dark.js')}}"></script>
 	<!-- End custom js for this page -->
 
-
-	
 	
 
 </body>

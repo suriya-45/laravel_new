@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Models\users;
@@ -106,5 +107,19 @@ Route::middleware(['auth', 'role:agent'])->group(function () {
  */
 
  Route::get('admin/login',[AdminController::class,"AdminLogin"])->name('admin.login');
+
+ Route::middleware(['auth','role:admin'])->group(function(){
+    Route::controller(PropertyController::class)->group(function(){
+    Route::get('admin/allproperty','Allproperty')->name('admin.allproperty');
+    Route::get('admin/addproperty','Addproperty')->name('admin.addproperty');
+    Route::post('admin/storeproperty','StoreProperty')->name('admin.storeproperty');
+    Route::get('admin/edit/property/{id}','EditProperty')->name('edit.property');
+    Route::get('admin/delete/property/{id}','DeleteProperty')->name('delete.property');
+    Route::post('admin/update/property','UpdateProperty')->name('update.property');
+
+
+  });
+
+ });
 
 require __DIR__ . '/auth.php';
